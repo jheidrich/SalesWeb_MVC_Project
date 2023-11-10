@@ -1,10 +1,54 @@
-﻿@*
+﻿@model IEnumerable<SalesProjectMVC.Models.Seller>
+
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sellers";
 }
 
-<h2>Sellers</h2>
+<h2>@ViewData["Title"]</h2>
 
-<p>Sellers Index Page</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr class="success">
+            <th>
+                @Html.DisplayNameFor(mSeller => mSeller.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(mSeller => mSeller.EMail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(mSeller => mSeller.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(mSeller => mSeller.BaseSalary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(sellerItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(sellerItem => item.EMail)
+            </td>
+            <td>
+                @Html.DisplayFor(sellerItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(sellerItem => item.BaseSalary)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-Id="@item.Id">Edit </a>
+                <a asp-action="Details" asp-route-Id="@item.Id">Details </a>
+                <a asp-action="Delete" asp-route-Id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>  
