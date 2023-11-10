@@ -5,16 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using SalesProjectMVC.Services;
 using SalesProjectMVC.Models; 
+using SalesProjectMVC.Models.ViewModel;
 
 namespace SalesProjectMVC.Controllers
 {
     public class SellersController : Controller
     {
         private readonly SellersService _sellerService;
+        private readonly DepartmentService _departmentService; 
 
-        public SellersController(SellersService sellerService)
+        public SellersController(SellersService sellerService, DepartmentService departmentService)
         {
             _sellerService = sellerService;
+            _departmentService = departmentService; 
         }
 
         public IActionResult Index()
@@ -25,7 +28,9 @@ namespace SalesProjectMVC.Controllers
 
         public IActionResult Create()
         {
-            return View(); 
+            List<Department> departmentsList = _departmentService.FindAll(); 
+            var viewModel = new SellerFormViewModel { Departments = departmentsList };
+            return View(viewModel); 
         }
 
         [HttpPost]

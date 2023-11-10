@@ -23,9 +23,6 @@ namespace SalesProjectMVC.Services
 
         public void Insert(Seller sellerObj)
         {
-            if (sellerObj.Department == null)
-                sellerObj.Department = _sellersContext.Department.First(); 
-
             _sellersContext.Add(sellerObj);
             _sellersContext.SaveChanges(); 
         }
