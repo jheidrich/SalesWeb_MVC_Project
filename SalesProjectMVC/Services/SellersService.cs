@@ -20,5 +20,11 @@ namespace SalesProjectMVC.Services
         {
             return _sellersContext.Seller.ToList(); 
         }
+
+        public void Insert(Seller sellerObj)
+        {
+            _sellersContext.Add(sellerObj);
+            _sellersContext.SaveChanges(); 
+        }
     }
 }
