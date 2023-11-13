@@ -26,5 +26,17 @@ namespace SalesProjectMVC.Services
             _sellersContext.Add(sellerObj);
             _sellersContext.SaveChanges(); 
         }
+
+        public Seller FindById(int id)
+        {
+            return _sellersContext.Seller.FirstOrDefault(reg => reg.Id == id);
+        }
+
+        public void Remove(int id)
+        {
+            Seller obj = _sellersContext.Seller.Find(id);
+            _sellersContext.Remove(obj);
+            _sellersContext.SaveChanges(); 
+        }
     }
 }
