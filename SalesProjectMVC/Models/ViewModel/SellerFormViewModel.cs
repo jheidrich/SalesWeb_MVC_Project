@@ -5,6 +5,6 @@ namespace SalesProjectMVC.Models.ViewModel
     public class SellerFormViewModel
     {
         public Seller Seller { get; set; }
-        public List<Department> Departments { get; set; }
+        public ICollection<Department> Departments { get; set; }
     }
 }

@@ -27,6 +27,11 @@ namespace SalesProjectMVC.Models
             BirthDate = birthDate;
             BaseSalary = baseSalary;
             Department = department;
+
+            if (department != null)
+                DepartmentId = department.Id;
+            else
+                DepartmentId = 0;
         }
 
         public void AddSales(SalesRecord saleRecord)

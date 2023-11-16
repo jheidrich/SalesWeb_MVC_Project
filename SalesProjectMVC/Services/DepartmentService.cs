@@ -20,5 +20,9 @@ namespace SalesProjectMVC.Services
             return _departmentContext.Department.OrderBy(dep => dep.Name).ToList(); 
         }
 
+        public Department FindById(int id)
+        {
+            return _departmentContext.Department.FirstOrDefault(reg => reg.Id == id); 
+        }
     }
 }
