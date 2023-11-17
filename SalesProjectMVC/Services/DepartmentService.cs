@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore; 
+
 using SalesProjectMVC.Data;
 using SalesProjectMVC.Models; 
 
@@ -15,14 +18,14 @@ namespace SalesProjectMVC.Services
             _departmentContext = departmentContext;
         }
 
-        public List<Department> FindAll()
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _departmentContext.Department.OrderBy(dep => dep.Name).ToList(); 
+            return await _departmentContext.Department.OrderBy(dep => dep.Name).ToListAsync(); 
         }
 
-        public Department FindById(int id)
+        public async Task<Department> FindByIdAsync(int id)
         {
-            return _departmentContext.Department.FirstOrDefault(reg => reg.Id == id); 
+            return await _departmentContext.Department.FirstOrDefaultAsync(reg => reg.Id == id); 
         }
     }
 }
